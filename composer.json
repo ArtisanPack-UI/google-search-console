@@ -22,7 +22,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\": "tests/"
+      "Tests\\": "tests/",
+      "ArtisanPackUI\\CMSFramework\\Modules\\AdminWidgets\\": "tests/Stubs/CmsFrameworkAdminWidgets/"
     }
   },
   "authors": [
@@ -44,12 +45,14 @@
     "artisanpack-ui/code-style-pint": "^1.1",
     "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
     "laravel/pint": "^1.26",
+    "livewire/livewire": "^3.6",
     "orchestra/testbench": "^10.2|^11.0",
     "friendsofphp/php-cs-fixer": "^3.75"
   },
   "suggest": {
     "artisanpack-ui/seo": "Surfaces Search Console performance data alongside the shared SEO package's audit and reporting UI.",
-    "artisanpack-ui/livewire-ui-components": "Renders the Search Console performance and coverage panels with x-artisanpack-* components."
+    "artisanpack-ui/livewire-ui-components": "Renders the Search Console performance and coverage panels with x-artisanpack-* components.",
+    "artisanpack-ui/cms-framework": "Registers the three Search Console components as admin dashboard widgets via the optional AdminWidget bridge."
   },
   "scripts": {
     "lint": [

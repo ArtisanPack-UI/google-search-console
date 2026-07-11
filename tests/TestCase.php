@@ -7,6 +7,8 @@ namespace Tests;
 use ArtisanPackUI\Google\GoogleServiceProvider;
 use ArtisanPackUI\GoogleSearchConsole\GoogleSearchConsoleServiceProvider;
 use ArtisanPackUI\GoogleSearchConsole\Support\BaseInstalled;
+use ArtisanPackUI\GoogleSearchConsole\Support\CmsFrameworkInstalled;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 /**
@@ -21,11 +23,13 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         BaseInstalled::reset();
+        CmsFrameworkInstalled::reset();
     }
 
     protected function tearDown(): void
     {
         BaseInstalled::reset();
+        CmsFrameworkInstalled::reset();
 
         parent::tearDown();
     }
@@ -38,6 +42,7 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders( $app ): array
     {
         return [
+            LivewireServiceProvider::class,
             GoogleServiceProvider::class,
             GoogleSearchConsoleServiceProvider::class,
         ];
