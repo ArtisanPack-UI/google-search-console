@@ -3,9 +3,10 @@
 /**
  * GoogleSearchConsole service provider.
  *
- * Bootstraps the Search Console package by registering the container
- * binding for the main class. Relies on the shared google base package
- * for OAuth2, token, and scope services.
+ * Bootstraps the Search Console package: registers the shared
+ * SearchAnalyticsClient, contributes required OAuth scopes to the
+ * shared google base package, registers Livewire components, and
+ * loads the HTTP routes that back the React and Vue components.
  *
  * @package    ArtisanPack_UI
  * @subpackage GoogleSearchConsole
@@ -19,55 +20,159 @@ declare( strict_types=1 );
 
 namespace ArtisanPackUI\GoogleSearchConsole;
 
+use ArtisanPackUI\Google\Tokens\TokenManager;
+use ArtisanPackUI\GoogleSearchConsole\Livewire\PerformanceCard;
+use ArtisanPackUI\GoogleSearchConsole\Livewire\TopPagesTable;
+use ArtisanPackUI\GoogleSearchConsole\Livewire\TopQueriesTable;
+use ArtisanPackUI\GoogleSearchConsole\Reporting\SearchAnalyticsClient;
+use ArtisanPackUI\GoogleSearchConsole\Support\BaseInstalled;
+use ArtisanPackUI\GoogleSearchConsole\Support\GoogleConnectionResolver;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\Client\Factory as HttpFactory;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Service provider for the GoogleSearchConsole package.
  *
- * Binds the main GoogleSearchConsole class and boots the Search
- * Console reporting surface. Add configuration publishing,
- * migrations, routes, and Livewire component registration here as the
- * package grows.
- *
  * @package    ArtisanPack_UI
  * @subpackage GoogleSearchConsole
  *
- * @since      1.0.0
+ * @since 1.0.0
  */
 class GoogleSearchConsoleServiceProvider extends ServiceProvider
 {
     /**
-     * Registers any application services.
-     *
-     * Binds the GoogleSearchConsole class as a singleton in the
-     * container.
-     *
      * @since 1.0.0
-     *
-     * @return void
      */
     public function register(): void
     {
-        $this->app->singleton( 'google-search-console', function ( $app ) {
-            return new GoogleSearchConsole();
+        $this->mergeConfigFrom( __DIR__ . '/../config/google-search-console.php', 'google-search-console' );
+
+        $this->app->singleton(
+            GoogleConnectionResolver::class,
+            fn (): GoogleConnectionResolver => new GoogleConnectionResolver(),
+        );
+
+        $this->app->singleton( SearchAnalyticsClient::class, fn ( Application $app ): SearchAnalyticsClient => new SearchAnalyticsClient(
+            $app[ 'config' ],
+            $app->make( HttpFactory::class ),
+            BaseInstalled::check() ? $app->make( TokenManager::class ) : null,
+            $app->make( 'cache.store' ),
+        ) );
+
+        $this->app->singleton( 'google-search-console', function ( Application $app ): GoogleSearchConsole {
+            return new GoogleSearchConsole(
+                BaseInstalled::check() ? $app->make( SearchAnalyticsClient::class ) : null,
+            );
         } );
     }
 
     /**
-     * Bootstraps any application services.
-     *
-     * Add package bootstrapping here such as:
-     * - Configuration publishing: $this->publishes([...])
-     * - Migration loading: $this->loadMigrationsFrom(...)
-     * - Route loading: $this->loadRoutesFrom(...)
-     * - Livewire component registration
-     *
      * @since 1.0.0
-     *
-     * @return void
      */
     public function boot(): void
     {
-        // Add your package bootstrapping here
+        $this->publishes( [
+            __DIR__ . '/../config/google-search-console.php' => config_path( 'google-search-console.php' ),
+        ], 'google-search-console-config' );
+
+        $this->publishes( [
+            __DIR__ . '/../resources/views' => resource_path( 'views/vendor/google-search-console' ),
+        ], 'google-search-console-views' );
+
+        $this->publishes( [
+            __DIR__ . '/../resources/js' => resource_path( 'js/vendor/google-search-console' ),
+        ], 'google-search-console-js' );
+
+        $this->loadViewsFrom( __DIR__ . '/../resources/views', 'google-search-console' );
+
+        $this->registerRoutes();
+        $this->registerGoogleScopeHook();
+        $this->registerLivewireComponents();
+    }
+
+    /**
+     * Load the HTTP routes when the base is installed. The routes hit
+     * the GoogleConnection model so we cannot register them without
+     * the base package on the autoloader.
+     *
+     * @since 1.0.0
+     */
+    protected function registerRoutes(): void
+    {
+        if ( ! BaseInstalled::check() ) {
+            return;
+        }
+
+        if ( false === (bool) $this->app[ 'config' ]->get( 'google-search-console.routes.enabled', true ) ) {
+            return;
+        }
+
+        Route::group( [
+            'prefix'     => (string) $this->app[ 'config' ]->get( 'google-search-console.routes.prefix', 'google-search-console' ),
+            'middleware' => (array) $this->app[ 'config' ]->get( 'google-search-console.routes.middleware', [ 'web', 'auth' ] ),
+        ], function (): void {
+            $this->loadRoutesFrom( __DIR__ . '/../routes/web.php' );
+        } );
+    }
+
+    /**
+     * Contribute the webmasters.readonly scope to the base google
+     * package's ScopeRegistry via the `ap.google.scopes` filter hook so
+     * the single-consent screen covers Search Console alongside every
+     * other Google service.
+     *
+     * Skips silently if the hooks helpers or the base package are
+     * missing — the package still boots on hosts without them.
+     *
+     * @since 1.0.0
+     */
+    protected function registerGoogleScopeHook(): void
+    {
+        if ( ! BaseInstalled::check() ) {
+            return;
+        }
+
+        if ( ! function_exists( 'addFilter' ) ) {
+            return;
+        }
+
+        $config = $this->app[ 'config' ];
+
+        addFilter( 'ap.google.scopes', static function ( array $scopes ) use ( $config ): array {
+            $ours = (array) $config->get( 'google-search-console.scopes', [] );
+
+            return array_values( array_unique( array_merge( $scopes, array_map( 'strval', $ours ) ) ) );
+        } );
+    }
+
+    /**
+     * Register Livewire components when Livewire is installed. Livewire
+     * is an optional peer — apps without it can still use the React and
+     * Vue components without penalty.
+     *
+     * @since 1.0.0
+     */
+    protected function registerLivewireComponents(): void
+    {
+        if ( ! class_exists( \Livewire\Livewire::class ) ) {
+            return;
+        }
+
+        \Livewire\Livewire::component(
+            'google-search-console::performance-card',
+            PerformanceCard::class,
+        );
+
+        \Livewire\Livewire::component(
+            'google-search-console::top-queries-table',
+            TopQueriesTable::class,
+        );
+
+        \Livewire\Livewire::component(
+            'google-search-console::top-pages-table',
+            TopPagesTable::class,
+        );
     }
 }
