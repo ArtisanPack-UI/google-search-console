@@ -1,47 +1,62 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Test Case
-|--------------------------------------------------------------------------
-|
-| The closure you provide to your test functions is always bound to a specific PHPUnit test
-| case class. By default, that class is "PHPUnit\Framework\TestCase". Of course, you may
-| need to change it using the "pest()" function to bind a different classes or traits.
-|
-*/
+use ArtisanPackUI\Google\Models\GoogleConnection;
+use ArtisanPackUI\Google\Tokens\TokenManager;
 
 pest()->extend( Tests\TestCase::class )
- // ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in( 'Feature' );
-
-/*
-|--------------------------------------------------------------------------
-| Expectations
-|--------------------------------------------------------------------------
-|
-| When you're writing tests, you often need to check that values meet certain conditions. The
-| "expect()" function gives you access to a set of "expectations" methods that you can use
-| to assert different things. Of course, you may extend the Expectation API at any time.
-|
-*/
 
 expect()->extend( 'toBeOne', function () {
     return $this->toBe( 1 );
 } );
 
-/*
-|--------------------------------------------------------------------------
-| Functions
-|--------------------------------------------------------------------------
-|
-| While Pest is very powerful out-of-the-box, you may have some testing code specific to your
-| project that you don't want to repeat in every file. Here you can also expose helpers as
-| global functions to help you to reduce the number of lines of code in your test files.
-|
-*/
+if ( ! function_exists( 'makeGscStubTokenManager' ) ) {
+    /**
+     * Returns a TokenManager anonymous stub that yields the given token
+     * regardless of the connection passed in.
+     */
+    function makeGscStubTokenManager( string $token ): TokenManager
+    {
+        return new class( $token ) extends TokenManager {
+            public function __construct( private string $token )
+            {
+            }
 
-function something(): void
-{
-    // ..
+            public function getValidAccessToken( GoogleConnection $connection ): string
+            {
+                return $this->token;
+            }
+        };
+    }
+}
+
+if ( ! function_exists( 'makeGscThrowingTokenManager' ) ) {
+    function makeGscThrowingTokenManager( Throwable $exception ): TokenManager
+    {
+        return new class( $exception ) extends TokenManager {
+            public function __construct( private Throwable $exception )
+            {
+            }
+
+            public function getValidAccessToken( GoogleConnection $connection ): string
+            {
+                throw $this->exception;
+            }
+        };
+    }
+}
+
+if ( ! function_exists( 'makeGscConnectedConnection' ) ) {
+    function makeGscConnectedConnection(): GoogleConnection
+    {
+        $connection                 = new GoogleConnection();
+        $connection->id             = 1;
+        $connection->user_id        = 1;
+        $connection->google_user_id = 'test-user';
+        $connection->email          = 'test@example.com';
+        $connection->status         = GoogleConnection::STATUS_CONNECTED;
+        $connection->exists         = true;
+
+        return $connection;
+    }
 }
