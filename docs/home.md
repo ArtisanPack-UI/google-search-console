@@ -8,7 +8,7 @@ Welcome to the documentation for **ArtisanPack UI Google Search Console** — a 
 
 The package sits on top of [`artisanpack-ui/google`](https://github.com/ArtisanPack-UI/google) for OAuth2 authentication, token storage/refresh, and single-consent scope management. Every Search Console API call authenticates through the base package's token manager, and the `webmasters.readonly` scope is contributed to the base package's shared registry so it appears on the single-consent screen alongside every other Google service your app uses.
 
-Links use the GitLab wiki page style, so you can jump between pages like [Getting Started](Getting-Started) or [Components](Components).
+Use the navigation below to explore topics. Links use the GitLab wiki page style, so you can jump between pages like [Getting Started](Getting-Started) or [Components](Components).
 
 - [Getting Started](Getting-Started)
 - [Installation](Installation)
