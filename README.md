@@ -2,6 +2,8 @@
 
 Search Console performance data and drop-in UI components (Livewire, React, Vue) for the ArtisanPack UI ecosystem. Uses the shared [`artisanpack-ui/google`](https://github.com/ArtisanPack-UI/google) base package for OAuth2 authentication, token storage/refresh, and single-consent scope management, and calls the Search Console API to surface performance and coverage insights.
 
+> **Deeper documentation** — this README covers the essentials. Full docs live under [`docs/`](docs/home.md): installation, per-framework component guides, HTTP endpoint reference, reporting API, CMS framework bridge, testing patterns, FAQ, and troubleshooting.
+
 ## Requirements
 
 - PHP **8.2+**
