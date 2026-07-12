@@ -18,18 +18,47 @@ declare( strict_types=1 );
 
 namespace ArtisanPackUI\GoogleSearchConsole;
 
+use ArtisanPackUI\GoogleSearchConsole\Reporting\SearchAnalyticsClient;
+use ArtisanPackUI\GoogleSearchConsole\Support\BaseInstalled;
+
 /**
- * Main GoogleSearchConsole class.
- *
- * Add Search Console reporting and coverage methods here as the
- * package grows.
+ * Convenience aggregator for the GoogleSearchConsole services.
  *
  * @package    ArtisanPack_UI
  * @subpackage GoogleSearchConsole
  *
- * @since      1.0.0
+ * @since 1.0.0
  */
 class GoogleSearchConsole
 {
-    // Add your package methods here
+    public function __construct(
+        protected ?SearchAnalyticsClient $client = null,
+    ) {
+    }
+
+    /**
+     * The Search Console API client. Available only when the base
+     * google package is installed; otherwise returns null so callers
+     * can feature-detect rather than catching an exception.
+     *
+     * @since 1.0.0
+     */
+    public function client(): ?SearchAnalyticsClient
+    {
+        if ( ! $this->hasReporting() ) {
+            return null;
+        }
+
+        return $this->client;
+    }
+
+    /**
+     * Whether the reporting side is usable in the current environment.
+     *
+     * @since 1.0.0
+     */
+    public function hasReporting(): bool
+    {
+        return null !== $this->client && BaseInstalled::check();
+    }
 }
