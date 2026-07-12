@@ -8,18 +8,18 @@ The public surface of `artisanpack-ui/google-search-console`.
 
 Sub-pages by class or group:
 
-- [[API Reference/Google Search Console|`GoogleSearchConsole` — the facade / helper root]]
-- [[API Reference/Search Analytics Client|`SearchAnalyticsClient`]]
-- [[API Reference/Search Analytics Request|`SearchAnalyticsRequest`]]
-- [[API Reference/Search Analytics Response|`SearchAnalyticsResponse`]]
-- [[API Reference/Date Range|`DateRange`]]
-- [[API Reference/Fetchers|Fetchers]] — the three high-level report fetchers.
-- [[API Reference/Data Objects|Data objects]] — the DTOs the fetchers return.
-- [[API Reference/Livewire Components|Livewire components]]
-- [[API Reference/Widget Wrappers|Widget wrappers]]
-- [[API Reference/Controllers|Controllers]]
-- [[API Reference/Support|Support]] — `BaseInstalled`, `CmsFrameworkInstalled`, `GoogleConnectionResolver`.
-- [[API Reference/Exceptions|Exceptions]]
+- [`GoogleSearchConsole` — the facade / helper root](API-Reference-Google-Search-Console)
+- [`SearchAnalyticsClient`](API-Reference-Search-Analytics-Client)
+- [`SearchAnalyticsRequest`](API-Reference-Search-Analytics-Request)
+- [`SearchAnalyticsResponse`](API-Reference-Search-Analytics-Response)
+- [`DateRange`](API-Reference-Date-Range)
+- [Fetchers](API-Reference-Fetchers) — the three high-level report fetchers.
+- [Data objects](API-Reference-Data-Objects) — the DTOs the fetchers return.
+- [Livewire components](API-Reference-Livewire-Components)
+- [Widget wrappers](API-Reference-Widget-Wrappers)
+- [Controllers](API-Reference-Controllers)
+- [Support](API-Reference-Support) — `BaseInstalled`, `CmsFrameworkInstalled`, `GoogleConnectionResolver`.
+- [Exceptions](API-Reference-Exceptions)
 
 ## The facade
 
@@ -50,7 +50,7 @@ The service provider registers:
 | `SearchAnalyticsClient::class` | The client, built from config + Laravel HTTP client + TokenManager + cache | Singleton |
 | `GoogleConnectionResolver::class` | Resolves a `GoogleConnection` for an authenticated user | Singleton |
 
-Rebind any of them (e.g., in a tenant middleware) to swap behavior per request — see [[Reporting#Multi-tenant apps]].
+Rebind any of them (e.g., in a tenant middleware) to swap behavior per request — see [Reporting](Reporting#multi-tenant-apps).
 
 ## Namespace map
 
@@ -95,7 +95,7 @@ ArtisanPackUI\GoogleSearchConsole\
 
 ## Public routes
 
-Reference: [[HTTP Endpoints]].
+Reference: [HTTP Endpoints](HTTP-Endpoints).
 
 | Route name | Method | URI |
 |---|---|---|
@@ -123,11 +123,11 @@ Publish with `--tag=google-search-console-views`.
 
 | Hook | Contract | Purpose |
 |---|---|---|
-| `ap.google.scopes` | Filter — receives and returns `array<int, string>` | Contribute `webmasters.readonly` to the base package's [[Scopes|scope registry]]. Registered inside `GoogleSearchConsoleServiceProvider::registerGoogleScopeHook()`. |
+| `ap.google.scopes` | Filter — receives and returns `array<int, string>` | Contribute `webmasters.readonly` to the base package's [scope registry](Scopes). Registered inside `GoogleSearchConsoleServiceProvider::registerGoogleScopeHook()`. |
 
 ## CMS framework registrations
 
-When [[CMS Framework Bridge|the bridge is active]]:
+When [the bridge is active](CMS-Framework-Bridge):
 
 | Widget type | Class | Capability |
 |---|---|---|
@@ -142,4 +142,4 @@ GoogleSearchConsoleServiceProvider::cmsFrameworkWidgetTypeMap();
 ```
 
 ---
-Continue to [[Testing]] →
+Continue to [Testing](Testing) →

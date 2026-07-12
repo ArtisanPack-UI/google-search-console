@@ -16,11 +16,11 @@ Only if you want the Livewire components or the CMS framework bridge. The React 
 
 ### Do I need `artisanpack-ui/cms-framework`?
 
-Only for the [[CMS Framework Bridge|admin widget bridge]]. Without it, the package boots fine and the three components work standalone.
+Only for the [admin widget bridge](CMS-Framework-Bridge). Without it, the package boots fine and the three components work standalone.
 
 ### Can this package call Google APIs other than Search Console?
 
-No. The `SearchAnalyticsClient` wraps `searchAnalytics.query` only. For URL Inspection, Sitemaps, or the Indexing API, go straight through the base package's `TokenManager` — see [[Components/Custom#Falling back to Google directly]].
+No. The `SearchAnalyticsClient` wraps `searchAnalytics.query` only. For URL Inspection, Sitemaps, or the Indexing API, go straight through the base package's `TokenManager` — see [Components/Custom](Components-Custom#falling-back-to-google-directly).
 
 ## Property setup
 
@@ -33,11 +33,11 @@ curl 'https://searchconsole.googleapis.com/webmasters/v3/sites' \
     -H "Authorization: Bearer <token>"
 ```
 
-Or use the debug helper — [[Installation/Property Verification#Debug route in a dev app]].
+Or use the debug helper — [Installation/Property Verification](Installation-Property-Verification#debug-route-in-a-dev-app).
 
 ### Can I query different properties for different users?
 
-Yes. Rebind `SearchAnalyticsClient` per tenant / per user in a middleware — see [[Reporting#Multi-tenant apps]].
+Yes. Rebind `SearchAnalyticsClient` per tenant / per user in a middleware — see [Reporting](Reporting#multi-tenant-apps).
 
 **Do not** try to accept a `?site_url` query string on the endpoints. The controllers deliberately ignore it because doing otherwise would let any authenticated user query any property the shared account owns.
 
@@ -57,7 +57,7 @@ Users who connected the base package **before** this one was installed still hol
 
 Yes — override `google-search-console.scopes` in `config/google-search-console.php`. The filter callback reads the array on every dispatch. Rare use case; the read-only scope is the whole point.
 
-If you need to add a write scope alongside the read-only one, use a separate filter hook — see [[Scopes#What if I need a write scope?]].
+If you need to add a write scope alongside the read-only one, use a separate filter hook — see [Scopes](Scopes#what-if-i-need-a-write-scope?).
 
 ## Reporting
 
@@ -181,4 +181,4 @@ Ensure the base `artisanpack-ui/google` service provider is in `getPackageProvid
 $app->singleton( AdminWidgetManager::class );
 ```
 
-The package's own `TestCase` does this — see the reference in [[Testing#Test bootstrap]].
+The package's own `TestCase` does this — see the reference in [Testing](Testing#test-bootstrap).

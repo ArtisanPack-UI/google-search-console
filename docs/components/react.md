@@ -4,7 +4,7 @@ title: React Components
 
 # React Components
 
-Three React components ship as source under `resources/js/react/`. They fetch client-side from the [[HTTP Endpoints|HTTP endpoints]] and render the same reports as the Livewire and Vue equivalents.
+Three React components ship as source under `resources/js/react/`. They fetch client-side from the [HTTP endpoints](HTTP-Endpoints) and render the same reports as the Livewire and Vue equivalents.
 
 ## Requirements
 
@@ -122,7 +122,7 @@ async function load() {
 }
 ```
 
-See [[Components/Custom]] for the full API.
+See [Components/Custom](Components-Custom) for the full API.
 
 ## Aborting in-flight requests
 

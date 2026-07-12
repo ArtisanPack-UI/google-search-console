@@ -8,24 +8,24 @@ Welcome to the documentation for **ArtisanPack UI Google Search Console** — a 
 
 The package sits on top of [`artisanpack-ui/google`](https://github.com/ArtisanPack-UI/google) for OAuth2 authentication, token storage/refresh, and single-consent scope management. Every Search Console API call authenticates through the base package's token manager, and the `webmasters.readonly` scope is contributed to the base package's shared registry so it appears on the single-consent screen alongside every other Google service your app uses.
 
-Links use the GitLab wiki page style, so you can jump between pages like [[Getting Started]] or [[Components]].
+Links use the GitLab wiki page style, so you can jump between pages like [Getting Started](Getting-Started) or [Components](Components).
 
-- [[Getting Started]]
-- [[Installation]]
-- [[Components]]
-- [[HTTP Endpoints]]
-- [[Reporting]]
-- [[Scopes]]
-- [[CMS Framework Bridge]]
-- [[API Reference]]
-- [[Testing]]
-- [[FAQ]]
-- [[Troubleshooting]]
-- [[Contributing]]
+- [Getting Started](Getting-Started)
+- [Installation](Installation)
+- [Components](Components)
+- [HTTP Endpoints](HTTP-Endpoints)
+- [Reporting](Reporting)
+- [Scopes](Scopes)
+- [CMS Framework Bridge](CMS-Framework-Bridge)
+- [API Reference](API-Reference)
+- [Testing](Testing)
+- [FAQ](FAQ)
+- [Troubleshooting](Troubleshooting)
+- [Contributing](Contributing)
 
 Release history lives in [`CHANGELOG.md`](../CHANGELOG.md) at the repo root — the single source of truth.
 
-If you're new here, start with [[Getting Started]].
+If you're new here, start with [Getting Started](Getting-Started).
 
 ## What this package does
 

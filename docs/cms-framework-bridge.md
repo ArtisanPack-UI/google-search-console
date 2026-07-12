@@ -4,7 +4,7 @@ title: CMS Framework Bridge
 
 # CMS Framework Bridge
 
-An **optional** bridge that surfaces the three [[Components/Livewire|Livewire components]] as admin dashboard widgets for [`artisanpack-ui/cms-framework`](https://github.com/ArtisanPack-UI/cms-framework). When the framework is installed the widgets appear in the "Add Widget" panel automatically; when it isn't, the bridge is dormant and the package keeps running exactly as before.
+An **optional** bridge that surfaces the three [Livewire components](Components-Livewire) as admin dashboard widgets for [`artisanpack-ui/cms-framework`](https://github.com/ArtisanPack-UI/cms-framework). When the framework is installed the widgets appear in the "Add Widget" panel automatically; when it isn't, the bridge is dormant and the package keeps running exactly as before.
 
 The bridge is a strict, one-directional integration:
 
@@ -14,9 +14,9 @@ The bridge is a strict, one-directional integration:
 
 Sub-pages:
 
-- [[CMS Framework Bridge/Widgets|The three widget wrappers]] — class names, widget types, metadata.
-- [[CMS Framework Bridge/Integration|Integration]] — installing, verifying, and rendering the widgets.
-- [[CMS Framework Bridge/Capabilities|Capabilities]] — the `view_google_search_console` permission and how the framework filters widgets per user.
+- [The three widget wrappers](CMS-Framework-Bridge-Widgets) — class names, widget types, metadata.
+- [Integration](CMS-Framework-Bridge-Integration) — installing, verifying, and rendering the widgets.
+- [Capabilities](CMS-Framework-Bridge-Capabilities) — the `view_google_search_console` permission and how the framework filters widgets per user.
 
 ## Quick reference
 
@@ -82,7 +82,7 @@ Which is why the widget wrappers **extend** the Livewire components — the wrap
 
 ## Testing the bridge
 
-The package's own `tests/Feature/CmsFrameworkBridgeTest.php` uses local test stubs under `tests/Stubs/CmsFrameworkAdminWidgets/` autoloaded into the real cms-framework namespace via `autoload-dev`, so the bridge is fully exercised without pulling the full cms-framework package (and its Scramble / Sanctum / RBAC deps) into `require-dev`. See [[Testing]].
+The package's own `tests/Feature/CmsFrameworkBridgeTest.php` uses local test stubs under `tests/Stubs/CmsFrameworkAdminWidgets/` autoloaded into the real cms-framework namespace via `autoload-dev`, so the bridge is fully exercised without pulling the full cms-framework package (and its Scramble / Sanctum / RBAC deps) into `require-dev`. See [Testing](Testing).
 
 ---
-Continue to [[API Reference]] →
+Continue to [API Reference](API-Reference) →

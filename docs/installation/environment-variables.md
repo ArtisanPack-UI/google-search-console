@@ -4,7 +4,7 @@ title: Environment Variables
 
 # Environment Variables
 
-The package reads exactly one env var. Everything else lives in `config/google-search-console.php` (see [[Installation/Configuration|Configuration]]).
+The package reads exactly one env var. Everything else lives in `config/google-search-console.php` (see [Configuration](Installation-Configuration)).
 
 ## `GSC_SITE_URL`
 
@@ -23,9 +23,9 @@ GSC_SITE_URL="https://example.com/"
 GSC_SITE_URL="sc-domain:example.com"
 ```
 
-The string must literally match a property [Google Search Console](https://search.google.com/search-console) reports for the connected account. Trailing slashes, `http` vs `https`, and the `sc-domain:` prefix all matter. See [[Installation/Property Verification|property verification]].
+The string must literally match a property [Google Search Console](https://search.google.com/search-console) reports for the connected account. Trailing slashes, `http` vs `https`, and the `sc-domain:` prefix all matter. See [property verification](Installation-Property-Verification).
 
-For multi-tenant apps this env var is a footgun — one config value can't scope per-tenant safely. Override the `SearchAnalyticsClient` binding in your tenant middleware instead ([[Reporting#Multi-tenant apps]]).
+For multi-tenant apps this env var is a footgun — one config value can't scope per-tenant safely. Override the `SearchAnalyticsClient` binding in your tenant middleware instead ([Reporting](Reporting#multi-tenant-apps)).
 
 ## Env vars this package does not use
 

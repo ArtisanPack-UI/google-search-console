@@ -59,7 +59,7 @@ Filter to a single file or test:
 ./vendor/bin/pest --filter="caches successful query"
 ```
 
-The test suite uses Orchestra Testbench with an in-memory SQLite database. See [[Testing]] for the reference patterns.
+The test suite uses Orchestra Testbench with an in-memory SQLite database. See [Testing](Testing) for the reference patterns.
 
 ## Code style
 

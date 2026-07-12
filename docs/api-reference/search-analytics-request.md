@@ -89,6 +89,6 @@ Full operator list at Google's [Search Analytics API reference](https://develope
 
 ## See also
 
-- [[API Reference/Search Analytics Client]] — accepts this DTO.
-- [[API Reference/Date Range]] — the `dateRange` property type.
-- [[Reporting/Search Analytics Client]] — usage patterns.
+- [API Reference/Search Analytics Client](API-Reference-Search-Analytics-Client) — accepts this DTO.
+- [API Reference/Date Range](API-Reference-Date-Range) — the `dateRange` property type.
+- [Reporting/Search Analytics Client](Reporting-Search-Analytics-Client) — usage patterns.

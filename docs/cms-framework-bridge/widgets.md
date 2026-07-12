@@ -118,7 +118,7 @@ Distinct from the standalone base aliases (`google-search-console::performance-c
 
 ## See also
 
-- [[CMS Framework Bridge]] — bridge overview.
-- [[CMS Framework Bridge/Integration]] — installing and using with the CMS.
-- [[CMS Framework Bridge/Capabilities]] — the `view_google_search_console` permission.
-- [[API Reference/Widget Wrappers]] — full class signatures.
+- [CMS Framework Bridge](CMS-Framework-Bridge) — bridge overview.
+- [CMS Framework Bridge/Integration](CMS-Framework-Bridge-Integration) — installing and using with the CMS.
+- [CMS Framework Bridge/Capabilities](CMS-Framework-Bridge-Capabilities) — the `view_google_search_console` permission.
+- [API Reference/Widget Wrappers](API-Reference-Widget-Wrappers) — full class signatures.

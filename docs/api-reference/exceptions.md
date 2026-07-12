@@ -88,6 +88,6 @@ try {
 
 ## See also
 
-- [[API Reference/Search Analytics Client]] — the class that throws these.
-- [[FAQ#Runtime]] — common causes for each exception.
-- [[Troubleshooting]] — decoded error messages and fixes.
+- [API Reference/Search Analytics Client](API-Reference-Search-Analytics-Client) — the class that throws these.
+- [FAQ](FAQ#runtime) — common causes for each exception.
+- [Troubleshooting](Troubleshooting) — decoded error messages and fixes.

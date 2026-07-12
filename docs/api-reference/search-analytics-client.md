@@ -6,7 +6,7 @@ title: SearchAnalyticsClient
 
 FQCN: `ArtisanPackUI\GoogleSearchConsole\Reporting\SearchAnalyticsClient`
 
-Registered as a singleton. Behaviors and container binding covered in depth at [[Reporting/Search Analytics Client]]. This page is the class-level reference only.
+Registered as a singleton. Behaviors and container binding covered in depth at [Reporting/Search Analytics Client](Reporting-Search-Analytics-Client). This page is the class-level reference only.
 
 ## Constructor
 
@@ -51,8 +51,8 @@ Throws `BaseNotInstalledException::forReporting()` when `BaseInstalled::check() 
 
 ## See also
 
-- [[Reporting/Search Analytics Client]] — full behavior + examples.
-- [[Reporting/Caching]] — cache TTL, keys, disabling.
-- [[API Reference/Search Analytics Request]] — the request DTO.
-- [[API Reference/Search Analytics Response]] — the response DTO.
-- [[API Reference/Exceptions]] — `BaseNotInstalledException`, `ReportingException`.
+- [Reporting/Search Analytics Client](Reporting-Search-Analytics-Client) — full behavior + examples.
+- [Reporting/Caching](Reporting-Caching) — cache TTL, keys, disabling.
+- [API Reference/Search Analytics Request](API-Reference-Search-Analytics-Request) — the request DTO.
+- [API Reference/Search Analytics Response](API-Reference-Search-Analytics-Response) — the response DTO.
+- [API Reference/Exceptions](API-Reference-Exceptions) — `BaseNotInstalledException`, `ReportingException`.

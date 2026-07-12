@@ -40,7 +40,7 @@ Final, static-only.
 
 `true` when both `\ArtisanPackUI\CMSFramework\Modules\AdminWidgets\Contracts\AdminWidgetInterface` and `\ArtisanPackUI\CMSFramework\Modules\AdminWidgets\Services\AdminWidgetManager` are loadable. Cached per process.
 
-Used by `GoogleSearchConsoleServiceProvider::registerCmsFrameworkWidgets()` to gate the entire [[CMS Framework Bridge|bridge]].
+Used by `GoogleSearchConsoleServiceProvider::registerCmsFrameworkWidgets()` to gate the entire [bridge](CMS-Framework-Bridge).
 
 ### `reset(): void`
 
@@ -89,6 +89,6 @@ $this->app->instance( GoogleConnectionResolver::class, new class extends GoogleC
 
 ## See also
 
-- [[FAQ#Runtime]] — memoisation behavior and reset patterns.
-- [[Testing]] — how to use `setForTesting` in tests.
-- [[Reporting#Multi-tenant apps]] — full multi-tenant pattern.
+- [FAQ](FAQ#runtime) — memoisation behavior and reset patterns.
+- [Testing](Testing) — how to use `setForTesting` in tests.
+- [Reporting](Reporting#multi-tenant-apps) — full multi-tenant pattern.

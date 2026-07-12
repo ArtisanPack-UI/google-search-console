@@ -6,8 +6,8 @@ title: Building Your Own
 
 The shipped Livewire / React / Vue components all sit on top of the same public surfaces you can use directly:
 
-- **The [[HTTP Endpoints|three JSON endpoints]]** — call from any client-side framework via `fetch`.
-- **The [[Reporting|SearchAnalyticsClient + fetchers]]** — call from server-side PHP, no HTTP layer required.
+- **The [three JSON endpoints](HTTP-Endpoints)** — call from any client-side framework via `fetch`.
+- **The [SearchAnalyticsClient + fetchers](Reporting)** — call from server-side PHP, no HTTP layer required.
 
 ## From a non-Vue / non-React client
 
@@ -33,7 +33,7 @@ const data = await response.json()
 // data.hasData = boolean
 ```
 
-Full payload shapes: [[HTTP Endpoints]].
+Full payload shapes: [HTTP Endpoints](HTTP-Endpoints).
 
 ## From a Blade view (no Livewire)
 
@@ -59,7 +59,7 @@ Route::get( '/dashboard', function () {
 } );
 ```
 
-Full server-side API: [[Reporting]].
+Full server-side API: [Reporting](Reporting).
 
 ## From a queue job (nightly digest, weekly email, etc.)
 
@@ -111,10 +111,10 @@ Where `authenticatedFetch` is your app's fetch wrapper (session cookies, bearer 
 
 They never:
 
-- **Show one user's data to another.** The controllers pull the connection off `request()->user()` and never accept a `?site_url` query string override — see [[Reporting#Multi-tenant apps]] for the multi-tenant pattern.
+- **Show one user's data to another.** The controllers pull the connection off `request()->user()` and never accept a `?site_url` query string override — see [Reporting](Reporting#multi-tenant-apps) for the multi-tenant pattern.
 - **Persist Search Console data.** Every request round-trips to Google unless a cached copy is still warm.
 - **Render an "authorize with Google" button.** That's the base package's [connection UI](https://github.com/ArtisanPack-UI/google/blob/main/docs/connection-ui.md). If the user has no connection, the components render a call to action that links there.
-- **Break the CMS bridge's expectations.** The [[CMS Framework Bridge|widget wrappers]] extend these Livewire components without overriding markup, so anything you do to the components (publishing views, restyling) flows through to the widget wrappers automatically.
+- **Break the CMS bridge's expectations.** The [widget wrappers](CMS-Framework-Bridge) extend these Livewire components without overriding markup, so anything you do to the components (publishing views, restyling) flows through to the widget wrappers automatically.
 
 ## Falling back to Google directly
 

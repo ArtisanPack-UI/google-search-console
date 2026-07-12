@@ -30,7 +30,7 @@ The DTO exposes:
 - `totals: array{clicks: float, impressions: float, ctr: float, position: float}`
 - `trend: list<array{date: string, clicks: float, impressions: float, ctr: float, position: float}>`
 - `hasData: bool` — `false` when both calls returned zero rows (fresh property, last 2–3 finalising days, etc.).
-- `toArray(): array` — serializes to the shape the [[HTTP Endpoints/Performance|`/performance`]] endpoint returns.
+- `toArray(): array` — serializes to the shape the [`/performance`](HTTP-Endpoints-Performance) endpoint returns.
 
 Example:
 
@@ -61,7 +61,7 @@ One `searchAnalytics.query` call with dimension `query`, row limit `$limit ?? se
 The DTO exposes:
 
 - `rows: list<array{query: string, clicks: float, impressions: float, ctr: float, position: float}>`
-- `toArray(): array` — matches the [[HTTP Endpoints/Top Queries|`/top-queries`]] endpoint shape.
+- `toArray(): array` — matches the [`/top-queries`](HTTP-Endpoints-Top-Queries) endpoint shape.
 
 Rows come back sorted by clicks descending — Google's default and unchangeable (the API doesn't accept an `orderBys`).
 
@@ -152,6 +152,6 @@ Bind and inject as you would any Laravel service.
 
 ## See also
 
-- [[API Reference/Fetchers]] — full class signatures.
-- [[Reporting/Date Range]] — the `DateRange` value object.
-- [[Reporting/Search Analytics Client]] — the underlying client.
+- [API Reference/Fetchers](API-Reference-Fetchers) — full class signatures.
+- [Reporting/Date Range](Reporting-Date-Range) — the `DateRange` value object.
+- [Reporting/Search Analytics Client](Reporting-Search-Analytics-Client) — the underlying client.

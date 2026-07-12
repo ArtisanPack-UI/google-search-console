@@ -9,7 +9,7 @@ Returns the top search queries by clicks for a rolling range.
 - **Route name**: `google-search-console.top-queries`
 - **Middleware**: `web`, `auth`
 - **Controller**: `ArtisanPackUI\GoogleSearchConsole\Http\Controllers\TopQueriesController`
-- **Consumed by**: [[Components/React|`<TopQueriesTable />` (React)]] and [[Components/Vue|`<TopQueriesTable />` (Vue)]] via `resources/js/shared/top-queries.ts`.
+- **Consumed by**: [`<TopQueriesTable />` (React)](Components-React) and [`<TopQueriesTable />` (Vue)](Components-Vue) via `resources/js/shared/top-queries.ts`.
 
 ## Query parameters
 
@@ -42,7 +42,7 @@ An empty `rows` array is a valid response — it means Google returned zero quer
 
 ## Error responses
 
-Standard shape (see [[HTTP Endpoints#Error response shapes]]):
+Standard shape (see [HTTP Endpoints](HTTP-Endpoints#error-response-shapes)):
 
 - `401 unauthenticated`
 - `409 not_connected`

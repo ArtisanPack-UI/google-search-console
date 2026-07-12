@@ -9,7 +9,7 @@ Returns the top pages by clicks for a rolling range.
 - **Route name**: `google-search-console.top-pages`
 - **Middleware**: `web`, `auth`
 - **Controller**: `ArtisanPackUI\GoogleSearchConsole\Http\Controllers\TopPagesController`
-- **Consumed by**: [[Components/React|`<TopPagesTable />` (React)]] and [[Components/Vue|`<TopPagesTable />` (Vue)]] via `resources/js/shared/top-pages.ts`.
+- **Consumed by**: [`<TopPagesTable />` (React)](Components-React) and [`<TopPagesTable />` (Vue)](Components-Vue) via `resources/js/shared/top-pages.ts`.
 
 ## Query parameters
 
@@ -43,7 +43,7 @@ An empty `rows` array is valid — the components render an empty state.
 
 ## Error responses
 
-Standard shape (see [[HTTP Endpoints#Error response shapes]]):
+Standard shape (see [HTTP Endpoints](HTTP-Endpoints#error-response-shapes)):
 
 - `401 unauthenticated`
 - `409 not_connected`

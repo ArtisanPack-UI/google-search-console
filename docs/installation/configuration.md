@@ -31,9 +31,9 @@ Formats:
 | URL property | `https://example.com/` (trailing slash required) |
 | Domain property | `sc-domain:example.com` (no scheme, no slash) |
 
-The string must literally match one of the properties [Google Search Console](https://search.google.com/search-console) lists for the connected account. See [[Installation/Property Verification|property verification]].
+The string must literally match one of the properties [Google Search Console](https://search.google.com/search-console) lists for the connected account. See [property verification](Installation-Property-Verification).
 
-**Multi-tenant apps** should not set this via env — override the `SearchAnalyticsClient` binding in a tenant-scoped middleware / provider so each tenant queries its own property. See [[Reporting#Multi-tenant apps]].
+**Multi-tenant apps** should not set this via env — override the `SearchAnalyticsClient` binding in a tenant-scoped middleware / provider so each tenant queries its own property. See [Reporting](Reporting#multi-tenant-apps).
 
 ### `reporting.api_base`
 
@@ -68,7 +68,7 @@ The Google OAuth scopes this package contributes to the shared registry.
 - **Default**: `[ 'https://www.googleapis.com/auth/webmasters.readonly' ]`
 - **Type**: `array<int, string>`
 
-Registered via the `ap.google.scopes` filter hook. Rarely worth editing — the read-only Search Console scope is the whole point of the package. See [[Scopes]].
+Registered via the `ap.google.scopes` filter hook. Rarely worth editing — the read-only Search Console scope is the whole point of the package. See [Scopes](Scopes).
 
 ## `routes`
 
@@ -81,7 +81,7 @@ Whether to register the three HTTP routes at all.
 - **Default**: `true`
 - **Type**: `bool`
 
-Set to `false` for headless / API-only apps that only use the server-side [[Reporting|reporting]] API.
+Set to `false` for headless / API-only apps that only use the server-side [reporting](Reporting) API.
 
 ### `routes.prefix`
 
@@ -127,4 +127,4 @@ return [
 
 Every value is read at runtime — no compilation step, no boot-time freeze. `config()->set()` from a test, a middleware, or a service provider takes effect on the next `SearchAnalyticsClient` call.
 
-The `SearchAnalyticsClient` is registered as a **singleton**, so if you want to swap the client itself (not just its config) per tenant, you need to `->instance()` a fresh client into the container — see [[Reporting#Multi-tenant apps]].
+The `SearchAnalyticsClient` is registered as a **singleton**, so if you want to swap the client itself (not just its config) per tenant, you need to `->instance()` a fresh client into the container — see [Reporting](Reporting#multi-tenant-apps).

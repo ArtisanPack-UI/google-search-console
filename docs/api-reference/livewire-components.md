@@ -4,7 +4,7 @@ title: Livewire Components
 
 # Livewire Components
 
-Class-level reference. Usage guide: [[Components/Livewire]].
+Class-level reference. Usage guide: [Components/Livewire](Components-Livewire).
 
 All three components live under `ArtisanPackUI\GoogleSearchConsole\Livewire\*` and extend `Livewire\Component`.
 
@@ -76,10 +76,10 @@ Livewire::test( PerformanceCard::class )
     ->assertSee( 'Search performance' );
 ```
 
-Full patterns: [[Testing]].
+Full patterns: [Testing](Testing).
 
 ## See also
 
-- [[Components/Livewire]] — usage guide + view customisation.
-- [[API Reference/Widget Wrappers]] — the CMS widget wrappers that extend these.
-- [[Reporting/Fetchers]] — the fetchers each component uses under the hood.
+- [Components/Livewire](Components-Livewire) — usage guide + view customisation.
+- [API Reference/Widget Wrappers](API-Reference-Widget-Wrappers) — the CMS widget wrappers that extend these.
+- [Reporting/Fetchers](Reporting-Fetchers) — the fetchers each component uses under the hood.

@@ -23,7 +23,7 @@ The base [`artisanpack-ui/google`](https://github.com/ArtisanPack-UI/google) pac
 php artisan vendor:publish --tag=google-search-console-config
 ```
 
-Publishes `config/google-search-console.php`. Override the site URL, API base, cache TTL, scope list, or the HTTP route settings here. Full reference: [[Installation/Configuration|Configuration]].
+Publishes `config/google-search-console.php`. Override the site URL, API base, cache TTL, scope list, or the HTTP route settings here. Full reference: [Configuration](Installation-Configuration).
 
 ## Publish the views (optional)
 
@@ -31,7 +31,7 @@ Publishes `config/google-search-console.php`. Override the site URL, API base, c
 php artisan vendor:publish --tag=google-search-console-views
 ```
 
-Copies the three Blade views to `resources/views/vendor/google-search-console/`. Publish only if you need to customize the markup. Every component's view is a plain Blade file using BEM-classed HTML; there's no daisyUI / Tailwind Component library dependency by default. See [[Components/Livewire]].
+Copies the three Blade views to `resources/views/vendor/google-search-console/`. Publish only if you need to customize the markup. Every component's view is a plain Blade file using BEM-classed HTML; there's no daisyUI / Tailwind Component library dependency by default. See [Components/Livewire](Components-Livewire).
 
 ## Publish the JS components (optional)
 
@@ -39,7 +39,7 @@ Copies the three Blade views to `resources/views/vendor/google-search-console/`.
 php artisan vendor:publish --tag=google-search-console-js
 ```
 
-Copies the React (`resources/js/react/`), Vue (`resources/js/vue/`), and shared fetch layer (`resources/js/shared/`) sources to `resources/js/vendor/google-search-console/`. Skip this if you'd rather import from the package's `resources/js/` directly. See [[Components/React]] and [[Components/Vue]].
+Copies the React (`resources/js/react/`), Vue (`resources/js/vue/`), and shared fetch layer (`resources/js/shared/`) sources to `resources/js/vendor/google-search-console/`. Skip this if you'd rather import from the package's `resources/js/` directly. See [Components/React](Components-React) and [Components/Vue](Components-Vue).
 
 ## Configure your Search Console property
 
@@ -53,9 +53,9 @@ GSC_SITE_URL="https://example.com/"
 GSC_SITE_URL="sc-domain:example.com"
 ```
 
-The string must literally match one of the properties [Google Search Console](https://search.google.com/search-console) lists for the connected account. Trailing slashes, http vs https, and the `sc-domain:` prefix all matter. See [[Installation/Property Verification|property verification]] for the debugging routine.
+The string must literally match one of the properties [Google Search Console](https://search.google.com/search-console) lists for the connected account. Trailing slashes, http vs https, and the `sc-domain:` prefix all matter. See [property verification](Installation-Property-Verification) for the debugging routine.
 
-For multi-tenant apps this env var is a footgun — override the container binding instead. See [[Reporting#Multi-tenant apps]].
+For multi-tenant apps this env var is a footgun — override the container binding instead. See [Reporting](Reporting#multi-tenant-apps).
 
 ## OAuth scope contribution
 
@@ -63,7 +63,7 @@ The `webmasters.readonly` scope is contributed to the base package's shared `Sco
 
 Users who connected **before** you installed this package will have `needsReauthorize === true` on the base package's connection UI, which links them to `/google/auth/reauthorize` for the delta.
 
-Details: [[Scopes]].
+Details: [Scopes](Scopes).
 
 ## Apply route middleware (optional)
 
@@ -77,7 +77,7 @@ The three HTTP routes mount under `/google-search-console` with `[ 'web', 'auth'
 ],
 ```
 
-Set `'enabled' => false` to skip HTTP route registration entirely — the correct choice for headless / API-only apps that use only the [[Reporting|server-side reporting]] API. Route reference: [[HTTP Endpoints]].
+Set `'enabled' => false` to skip HTTP route registration entirely — the correct choice for headless / API-only apps that use only the [server-side reporting](Reporting) API. Route reference: [HTTP Endpoints](HTTP-Endpoints).
 
 ## Verify the install
 
@@ -111,10 +111,10 @@ php artisan tinker
 
 ## Deeper topics
 
-- [[Installation/Requirements|Requirements]] — PHP, Laravel, and peer-package versions in full detail.
-- [[Installation/Configuration|Configuration]] — full `config/google-search-console.php` reference.
-- [[Installation/Environment Variables|Environment variables]] — every env var the package reads.
-- [[Installation/Property Verification|Property verification]] — how to confirm the site URL your account can query, plus the `/gsc-test/sites-list` debug helper pattern.
+- [Requirements](Installation-Requirements) — PHP, Laravel, and peer-package versions in full detail.
+- [Configuration](Installation-Configuration) — full `config/google-search-console.php` reference.
+- [Environment variables](Installation-Environment-Variables) — every env var the package reads.
+- [Property verification](Installation-Property-Verification) — how to confirm the site URL your account can query, plus the `/gsc-test/sites-list` debug helper pattern.
 
 ---
-Continue to [[Components]] →
+Continue to [Components](Components) →

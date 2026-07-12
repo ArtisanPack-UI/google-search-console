@@ -57,5 +57,5 @@ Same singleton as the facade.
 
 ## See also
 
-- [[API Reference/Search Analytics Client]]
-- [[API Reference/Support]]
+- [API Reference/Search Analytics Client](API-Reference-Search-Analytics-Client)
+- [API Reference/Support](API-Reference-Support)

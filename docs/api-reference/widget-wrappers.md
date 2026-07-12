@@ -4,7 +4,7 @@ title: Widget Wrappers
 
 # Widget Wrappers
 
-Class-level reference for the optional [[CMS Framework Bridge|CMS framework bridge]].
+Class-level reference for the optional [CMS framework bridge](CMS-Framework-Bridge).
 
 All three live under `ArtisanPackUI\GoogleSearchConsole\Bridges\CmsFramework\AdminWidgets\*`. Each extends its corresponding Livewire component from `ArtisanPackUI\GoogleSearchConsole\Livewire\*` and implements `ArtisanPackUI\CMSFramework\Modules\AdminWidgets\Contracts\AdminWidgetInterface`.
 
@@ -105,6 +105,6 @@ Returns:
 
 ## See also
 
-- [[CMS Framework Bridge]] — bridge overview.
-- [[CMS Framework Bridge/Widgets]] — per-widget details.
-- [[API Reference/Livewire Components]] — the classes each widget extends.
+- [CMS Framework Bridge](CMS-Framework-Bridge) — bridge overview.
+- [CMS Framework Bridge/Widgets](CMS-Framework-Bridge-Widgets) — per-widget details.
+- [API Reference/Livewire Components](API-Reference-Livewire-Components) — the classes each widget extends.

@@ -27,8 +27,8 @@ The service provider registers with either the classic `config/app.php` provider
 
 | Package | Version | What it enables |
 |---|---|---|
-| [`livewire/livewire`](https://livewire.laravel.com/) | `^3.6` | The three `<livewire:google-search-console::*>` Livewire components and the [[CMS Framework Bridge]]. The React and Vue components do not require Livewire. |
-| [`artisanpack-ui/cms-framework`](https://github.com/ArtisanPack-UI/cms-framework) | any | The [[CMS Framework Bridge]] — three widget wrappers register with the framework's `AdminWidgetManager` so the components drop straight onto the CMS admin dashboard. |
+| [`livewire/livewire`](https://livewire.laravel.com/) | `^3.6` | The three `<livewire:google-search-console::*>` Livewire components and the [CMS Framework Bridge](CMS-Framework-Bridge). The React and Vue components do not require Livewire. |
+| [`artisanpack-ui/cms-framework`](https://github.com/ArtisanPack-UI/cms-framework) | any | The [CMS Framework Bridge](CMS-Framework-Bridge) — three widget wrappers register with the framework's `AdminWidgetManager` so the components drop straight onto the CMS admin dashboard. |
 
 Neither is required. The base package boots and works without them; the CMS bridge is dormant when the framework isn't installed, and the Livewire components are only registered when Livewire's class is autoloadable.
 
@@ -36,7 +36,7 @@ Neither is required. The base package boots and works without them; the CMS brid
 
 The `SearchAnalyticsClient` calls the Search Console API. That needs:
 
-- **A verified Search Console property** the connected Google account can query — see [[Installation/Property Verification|property verification]].
+- **A verified Search Console property** the connected Google account can query — see [property verification](Installation-Property-Verification).
 - **The `webmasters.readonly` OAuth scope** granted to the connected account. This package contributes the scope to the shared registry automatically, so the base package's `/connect` and `/reauthorize` flows will request it — but users who connected before this package was installed need to reauthorize.
 
 ## Encryption
@@ -49,7 +49,7 @@ The `SearchAnalyticsClient` optionally caches successful API responses for `goog
 
 ## Session driver
 
-The package does **not** rely on the session for anything. The [[HTTP Endpoints|HTTP endpoints]] use standard `auth` middleware; the session role there is Laravel's normal one.
+The package does **not** rely on the session for anything. The [HTTP endpoints](HTTP-Endpoints) use standard `auth` middleware; the session role there is Laravel's normal one.
 
 ## Frontend runtime (JS components only)
 

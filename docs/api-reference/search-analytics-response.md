@@ -69,5 +69,5 @@ Useful when the request had no dimensions but you still want typed access to a s
 
 ## See also
 
-- [[API Reference/Search Analytics Client]] — `query()` returns this.
-- [[API Reference/Search Analytics Request]] — building the request.
+- [API Reference/Search Analytics Client](API-Reference-Search-Analytics-Client) — `query()` returns this.
+- [API Reference/Search Analytics Request](API-Reference-Search-Analytics-Request) — building the request.

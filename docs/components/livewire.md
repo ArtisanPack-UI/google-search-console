@@ -178,7 +178,7 @@ Livewire::test( PerformanceCard::class )
     ->assertSee( 'Search performance' );
 ```
 
-Full test patterns in [[Testing]].
+Full test patterns in [Testing](Testing).
 
 ## The classes
 
@@ -186,4 +186,4 @@ Full test patterns in [[Testing]].
 - `ArtisanPackUI\GoogleSearchConsole\Livewire\TopQueriesTable`
 - `ArtisanPackUI\GoogleSearchConsole\Livewire\TopPagesTable`
 
-Every rule about what to show lives on the DTO layer (`PerformanceOverviewData`, `TopQueriesData`, `TopPagesData`) so the Livewire, React, and Vue surfaces cannot drift. See [[API Reference/Livewire Components]] for method signatures.
+Every rule about what to show lives on the DTO layer (`PerformanceOverviewData`, `TopQueriesData`, `TopPagesData`) so the Livewire, React, and Vue surfaces cannot drift. See [API Reference/Livewire Components](API-Reference-Livewire-Components) for method signatures.

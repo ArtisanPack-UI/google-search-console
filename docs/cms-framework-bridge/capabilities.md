@@ -107,10 +107,10 @@ The slug `view_google_search_console` is:
 - **`view_`-prefixed** — matches WordPress and RBAC convention that `view` is a read-only capability.
 - **package-scoped** — includes the package name so it can't collide with an app's own `view_search_console`.
 
-If you're worried about it clashing with a future scope (e.g., a `manage_google_search_console` write permission this package might introduce), notice that this package's client is read-only — the read-only scope [[Scopes|contributed to the base package]] wouldn't grant write access anyway. Adding `manage_*` later without a matching write feature is unlikely.
+If you're worried about it clashing with a future scope (e.g., a `manage_google_search_console` write permission this package might introduce), notice that this package's client is read-only — the read-only scope [contributed to the base package](Scopes) wouldn't grant write access anyway. Adding `manage_*` later without a matching write feature is unlikely.
 
 ## See also
 
-- [[CMS Framework Bridge]] — bridge overview.
-- [[CMS Framework Bridge/Widgets]] — widget classes and metadata.
-- [[CMS Framework Bridge/Integration]] — installing and using with the CMS.
+- [CMS Framework Bridge](CMS-Framework-Bridge) — bridge overview.
+- [CMS Framework Bridge/Widgets](CMS-Framework-Bridge-Widgets) — widget classes and metadata.
+- [CMS Framework Bridge/Integration](CMS-Framework-Bridge-Integration) — installing and using with the CMS.

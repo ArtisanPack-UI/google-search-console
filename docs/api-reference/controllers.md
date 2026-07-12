@@ -4,7 +4,7 @@ title: Controllers
 
 # Controllers
 
-Class-level reference. Behavior guide: [[HTTP Endpoints]].
+Class-level reference. Behavior guide: [HTTP Endpoints](HTTP-Endpoints).
 
 Every controller is a single-action invokable class. FQCNs live under `ArtisanPackUI\GoogleSearchConsole\Http\Controllers\*`.
 
@@ -59,7 +59,7 @@ Every controller returns:
 - `501` `{ error: 'base_not_installed', message, baseInstalled: false }` — `BaseInstalled::check()` failed.
 - `502` `{ error: 'reporting_error', message }` — `ReportingException` from the client.
 
-The three controllers deliberately ignore any `?site_url` query string. The site URL comes from `config('google-search-console.reporting.site_url')` only — accepting a caller-supplied override would let one authenticated user query any property the shared Google account owns. See [[HTTP Endpoints#Shared behavior]] and [[Reporting#Multi-tenant apps]].
+The three controllers deliberately ignore any `?site_url` query string. The site URL comes from `config('google-search-console.reporting.site_url')` only — accepting a caller-supplied override would let one authenticated user query any property the shared Google account owns. See [HTTP Endpoints](HTTP-Endpoints#shared-behavior) and [Reporting](Reporting#multi-tenant-apps).
 
 ## Testing
 
@@ -70,10 +70,10 @@ $this->actingAs( $user )
     ->assertJsonPath( 'totals.clicks', 42.0 );
 ```
 
-Reference test: `tests/Feature/ControllersTest.php`. Full patterns: [[Testing]].
+Reference test: `tests/Feature/ControllersTest.php`. Full patterns: [Testing](Testing).
 
 ## See also
 
-- [[HTTP Endpoints]] — behavior + payload shapes.
-- [[API Reference/Fetchers]] — fetchers the controllers dispatch to.
-- [[API Reference/Data Objects]] — DTOs whose `toArray()` is returned as JSON.
+- [HTTP Endpoints](HTTP-Endpoints) — behavior + payload shapes.
+- [API Reference/Fetchers](API-Reference-Fetchers) — fetchers the controllers dispatch to.
+- [API Reference/Data Objects](API-Reference-Data-Objects) — DTOs whose `toArray()` is returned as JSON.

@@ -4,7 +4,7 @@ title: Troubleshooting
 
 # Troubleshooting
 
-Common errors and what to check first. If your problem isn't here, the [[FAQ]] covers the "why is this designed like that?" questions.
+Common errors and what to check first. If your problem isn't here, the [FAQ](FAQ) covers the "why is this designed like that?" questions.
 
 ## Error messages
 
@@ -65,7 +65,7 @@ Thrown from `ReportingException::authenticationFailed()`. The base package's `To
 
 **Check:**
 
-- `GSC_SITE_URL` matches one of the `siteUrl` values from `sites.list` verbatim. See [[Installation/Property Verification]].
+- `GSC_SITE_URL` matches one of the `siteUrl` values from `sites.list` verbatim. See [Installation/Property Verification](Installation-Property-Verification).
 - Trailing slashes, `http` vs `https`, `www` prefix all matter.
 
 ### `Search Console API returned an error (status 429).`
@@ -96,7 +96,7 @@ Google-side. Retry with backoff — the client doesn't retry on its own.
 
 - User hits `/google/auth/connect` (base package route) → gets bounced back with a working row?
 - Row exists but `status = disconnected`? Check the `disconnect_reason` column.
-- Multi-tenant app? The connection is scoped by `user_id`; if your tenant model doesn't reuse the `User` model, override `GoogleConnectionResolver` — see [[API Reference/Support#GoogleConnectionResolver]].
+- Multi-tenant app? The connection is scoped by `user_id`; if your tenant model doesn't reuse the `User` model, override `GoogleConnectionResolver` — see [API Reference/Support](API-Reference-Support#googleconnectionresolver).
 
 ### Component renders but every metric is `0`
 
@@ -148,7 +148,7 @@ Almost certainly a cache key collision, or the resolver isn't tenant-scoped.
 **Check:**
 
 - Cache keys include `$connection->getKey()` — distinct `user_id` produces distinct keys, so this should be safe by default.
-- Multi-tenant middleware overrides `GoogleConnectionResolver` (see [[API Reference/Support#GoogleConnectionResolver]]).
+- Multi-tenant middleware overrides `GoogleConnectionResolver` (see [API Reference/Support](API-Reference-Support#googleconnectionresolver)).
 - No shared connection ID (unlikely — the base package's `google_connections.user_id` is unique).
 
 ### The Livewire component's `wire:poll.60s` hits the server but the response doesn't update
@@ -211,6 +211,6 @@ php artisan tinker
 
 ## Still stuck?
 
-- [[Testing]] — every failure mode above is covered by the package's own test suite. If you're not sure whether a behavior is a bug or a design, check `tests/Feature/*` for the reference.
-- [[FAQ]] — design rationale for anything that seems weird.
+- [Testing](Testing) — every failure mode above is covered by the package's own test suite. If you're not sure whether a behavior is a bug or a design, check `tests/Feature/*` for the reference.
+- [FAQ](FAQ) — design rationale for anything that seems weird.
 - GitHub issues on [`artisanpack-ui/google-search-console`](https://github.com/ArtisanPack-UI/google-search-console) — file a repro.

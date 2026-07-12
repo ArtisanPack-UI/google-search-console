@@ -4,7 +4,7 @@ title: Vue Components
 
 # Vue Components
 
-Three Vue 3 components ship as source under `resources/js/vue/`. They mirror the [[Components/React|React components]] API — same props, same states, same shared fetch client.
+Three Vue 3 components ship as source under `resources/js/vue/`. They mirror the [React components](Components-React) API — same props, same states, same shared fetch client.
 
 ## Requirements
 
@@ -89,7 +89,7 @@ Each component owns an `AbortController` that's aborted `onUnmounted` and on eve
 
 ## The shared fetch client
 
-Identical to the React one — the `.tsx` and `.vue` files import from the same `resources/js/shared/` layer. See [[Components/React#The shared fetch client]] for the API.
+Identical to the React one — the `.tsx` and `.vue` files import from the same `resources/js/shared/` layer. See [Components/React](Components-React#the-shared-fetch-client) for the API.
 
 Call it directly if you want your own UI:
 

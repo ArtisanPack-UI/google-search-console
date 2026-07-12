@@ -9,7 +9,7 @@ Returns the performance overview: totals across the range plus a daily trend ser
 - **Route name**: `google-search-console.performance`
 - **Middleware**: `web`, `auth`
 - **Controller**: `ArtisanPackUI\GoogleSearchConsole\Http\Controllers\PerformanceOverviewController`
-- **Consumed by**: [[Components/React|`<PerformanceCard />` (React)]] and [[Components/Vue|`<PerformanceCard />` (Vue)]] via `resources/js/shared/performance.ts`.
+- **Consumed by**: [`<PerformanceCard />` (React)](Components-React) and [`<PerformanceCard />` (Vue)](Components-Vue) via `resources/js/shared/performance.ts`.
 
 ## Query parameters
 
@@ -58,7 +58,7 @@ Echoes the resolved date range so the client doesn't have to compute it. `startD
 
 ## Error responses
 
-Standard shape (see [[HTTP Endpoints#Error response shapes]]):
+Standard shape (see [HTTP Endpoints](HTTP-Endpoints#error-response-shapes)):
 
 - `401 unauthenticated` — no signed-in user.
 - `409 not_connected` — user has no connected Google account.

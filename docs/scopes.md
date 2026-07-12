@@ -32,7 +32,7 @@ addFilter( 'ap.google.scopes', static function ( array $scopes ) use ( $config )
 
 Every time the base package's `ScopeRegistry::all()` runs, this callback fires, and `webmasters.readonly` ends up in the union.
 
-The hook itself is only registered when `BaseInstalled::check()` is true and the `addFilter` helper exists — the package boots safely on hosts that don't have the base package or the hooks package installed. See [[FAQ#Scopes]] for behavior when the base package is added *after* this one.
+The hook itself is only registered when `BaseInstalled::check()` is true and the `addFilter` helper exists — the package boots safely on hosts that don't have the base package or the hooks package installed. See [FAQ](FAQ#scopes) for behavior when the base package is added *after* this one.
 
 ## What the single-consent screen looks like
 
@@ -128,4 +128,4 @@ Then add it in Google Cloud Console and prompt users to reauthorize. This packag
 ## Reference
 
 - Google's [Search Console API scopes](https://developers.google.com/webmaster-tools/v1/how-tos/authorizing) reference.
-- The base package's [[Scopes|scope registry docs]].
+- The base package's [scope registry docs](Scopes).

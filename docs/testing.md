@@ -267,5 +267,5 @@ vendor/bin/pest --compact
 ## See also
 
 - The package's own `tests/Feature/*` — reference implementations for every pattern above.
-- [[Reporting/Caching]] — cache behavior in depth.
-- [[Troubleshooting]] — common test failures decoded.
+- [Reporting/Caching](Reporting-Caching) — cache behavior in depth.
+- [Troubleshooting](Troubleshooting) — common test failures decoded.

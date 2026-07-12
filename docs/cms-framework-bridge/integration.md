@@ -17,7 +17,7 @@ Both auto-register their service providers. Order doesn't matter — the bridge 
 
 Then follow both packages' base install steps:
 
-- `artisanpack-ui/google-search-console`: [[Installation|full install walkthrough]] — property verification, `GSC_SITE_URL`, etc.
+- `artisanpack-ui/google-search-console`: [full install walkthrough](Installation) — property verification, `GSC_SITE_URL`, etc.
 - `artisanpack-ui/cms-framework`: run its migrations and configure the admin dashboard route as documented in the framework's own docs.
 
 ## Verify the bridge is active
@@ -123,7 +123,7 @@ This is the standalone Livewire component behavior — no metadata, no framework
 
 ## See also
 
-- [[CMS Framework Bridge]] — overview.
-- [[CMS Framework Bridge/Widgets]] — widget classes and metadata.
-- [[CMS Framework Bridge/Capabilities]] — permission handling.
-- [[Testing]] — how the package's tests exercise the bridge without pulling in the full cms-framework dep.
+- [CMS Framework Bridge](CMS-Framework-Bridge) — overview.
+- [CMS Framework Bridge/Widgets](CMS-Framework-Bridge-Widgets) — widget classes and metadata.
+- [CMS Framework Bridge/Capabilities](CMS-Framework-Bridge-Capabilities) — permission handling.
+- [Testing](Testing) — how the package's tests exercise the bridge without pulling in the full cms-framework dep.

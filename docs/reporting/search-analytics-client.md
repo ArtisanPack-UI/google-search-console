@@ -36,7 +36,7 @@ Execute a `searchAnalytics.query` request against the configured (or overridden)
 
 - `$request` — a `SearchAnalyticsRequest` describing dimensions, date range, filters, and paging.
 - `$connection` — the connected Google account whose token authorizes the call.
-- `$siteUrl` — optional per-call override. Falls back to `config('google-search-console.reporting.site_url')` when null. **The controllers deliberately never pass this** — see [[HTTP Endpoints#Shared behavior]].
+- `$siteUrl` — optional per-call override. Falls back to `config('google-search-console.reporting.site_url')` when null. **The controllers deliberately never pass this** — see [HTTP Endpoints](HTTP-Endpoints#shared-behavior).
 
 Returns a `SearchAnalyticsResponse` DTO. Throws:
 
@@ -60,7 +60,7 @@ Successful responses are cached with a per-connection, per-query-payload key:
 google-search-console:query:<sha256( siteUrl | connectionId | jsonPayload )>
 ```
 
-TTL from `google-search-console.reporting.cache_ttl` (default `300` seconds). Set to `0` to disable. Details: [[Reporting/Caching]].
+TTL from `google-search-console.reporting.cache_ttl` (default `300` seconds). Set to `0` to disable. Details: [Reporting/Caching](Reporting-Caching).
 
 ## What it does not cache
 
@@ -87,7 +87,7 @@ $this->app->singleton( SearchAnalyticsClient::class, fn ( Application $app ): Se
 ) );
 ```
 
-**Singleton**, so a runtime `config()->set('google-search-console.reporting.site_url', '...')` only affects the client's per-call behavior (the property URL is re-read on every call). Swapping the client itself per tenant requires `->instance()` — see [[Reporting#Multi-tenant apps]].
+**Singleton**, so a runtime `config()->set('google-search-console.reporting.site_url', '...')` only affects the client's per-call behavior (the property URL is re-read on every call). Swapping the client itself per tenant requires `->instance()` — see [Reporting](Reporting#multi-tenant-apps).
 
 ## Example: custom dimensions
 
@@ -142,7 +142,7 @@ $response = app( SearchAnalyticsClient::class )->query(
 
 ## See also
 
-- [[API Reference/Search Analytics Client]] — full method reference.
-- [[API Reference/Search Analytics Request]] — request payload builder.
-- [[API Reference/Search Analytics Response]] — response accessor.
-- [[Reporting/Fetchers]] — higher-level helpers that build the canned requests.
+- [API Reference/Search Analytics Client](API-Reference-Search-Analytics-Client) — full method reference.
+- [API Reference/Search Analytics Request](API-Reference-Search-Analytics-Request) — request payload builder.
+- [API Reference/Search Analytics Response](API-Reference-Search-Analytics-Response) — response accessor.
+- [Reporting/Fetchers](Reporting-Fetchers) — higher-level helpers that build the canned requests.

@@ -6,7 +6,7 @@ title: DateRange
 
 Immutable inclusive date window. FQCN: `ArtisanPackUI\GoogleSearchConsole\Reporting\DateRange`.
 
-Full usage guide: [[Reporting/Date Range]]. This page is the class-level reference only.
+Full usage guide: [Reporting/Date Range](Reporting-Date-Range). This page is the class-level reference only.
 
 ## Constants
 
@@ -48,6 +48,6 @@ No timezone conversion — Google interprets both as UTC calendar days.
 
 ## See also
 
-- [[Reporting/Date Range]] — full usage + pitfalls.
-- [[API Reference/Search Analytics Request]] — accepts a `DateRange`.
-- [[API Reference/Fetchers]] — every fetcher takes a `DateRange`.
+- [Reporting/Date Range](Reporting-Date-Range) — full usage + pitfalls.
+- [API Reference/Search Analytics Request](API-Reference-Search-Analytics-Request) — accepts a `DateRange`.
+- [API Reference/Fetchers](API-Reference-Fetchers) — every fetcher takes a `DateRange`.

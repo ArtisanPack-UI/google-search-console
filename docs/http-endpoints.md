@@ -4,7 +4,7 @@ title: HTTP Endpoints
 
 # HTTP Endpoints
 
-The package mounts three JSON endpoints under `google-search-console.routes.prefix` (default `/google-search-console`) with `web` + `auth` middleware. They back the [[Components/React|React]] and [[Components/Vue|Vue]] components; the Livewire components fetch server-side and skip this layer entirely.
+The package mounts three JSON endpoints under `google-search-console.routes.prefix` (default `/google-search-console`) with `web` + `auth` middleware. They back the [React](Components-React) and [Vue](Components-Vue) components; the Livewire components fetch server-side and skip this layer entirely.
 
 Set `google-search-console.routes.enabled = false` in the config to skip registration completely — the correct choice for headless / API-only apps.
 
@@ -18,9 +18,9 @@ Set `google-search-console.routes.enabled = false` in the config to skip registr
 
 Sub-pages:
 
-- [[HTTP Endpoints/Performance|GET /performance]] — performance card payload.
-- [[HTTP Endpoints/Top Queries|GET /top-queries]] — top queries payload.
-- [[HTTP Endpoints/Top Pages|GET /top-pages]] — top pages payload.
+- [GET /performance](HTTP-Endpoints-Performance) — performance card payload.
+- [GET /top-queries](HTTP-Endpoints-Top-Queries) — top queries payload.
+- [GET /top-pages](HTTP-Endpoints-Top-Pages) — top pages payload.
 
 ## Shared behavior
 
@@ -30,7 +30,7 @@ All three endpoints:
 - Require the base package. If `BaseInstalled::check()` returns false, they respond with `501` and `{ "error": "base_not_installed", "message": "...", "baseInstalled": false }`.
 - Require a connected Google account. If `GoogleConnectionResolver::forUser()` returns null, they respond with `409` and `{ "error": "not_connected", "message": "..." }`.
 - Wrap Search Console API failures in `502` responses with `{ "error": "reporting_error", "message": "..." }`.
-- **Ignore any user-supplied `?site_url` query string.** The site URL comes from `config('google-search-console.reporting.site_url')` only. This is deliberate — accepting a caller-supplied override would let any authenticated user query any property the shared Google account owns. See [[Reporting#Multi-tenant apps]] for the multi-tenant pattern.
+- **Ignore any user-supplied `?site_url` query string.** The site URL comes from `config('google-search-console.reporting.site_url')` only. This is deliberate — accepting a caller-supplied override would let any authenticated user query any property the shared Google account owns. See [Reporting](Reporting#multi-tenant-apps) for the multi-tenant pattern.
 
 ## Query parameters
 
@@ -135,4 +135,4 @@ $this->actingAs( $user )
     ->assertJsonPath( 'totals.clicks', 42.0 );
 ```
 
-Fake Google with `Http::fake()`, stub `GoogleConnectionResolver` and `SearchAnalyticsClient` with `->instance()`, and the round-trip is deterministic. Full patterns in [[Testing]].
+Fake Google with `Http::fake()`, stub `GoogleConnectionResolver` and `SearchAnalyticsClient` with `->instance()`, and the round-trip is deterministic. Full patterns in [Testing](Testing).

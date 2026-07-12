@@ -4,7 +4,7 @@ title: Data Objects
 
 # Data Objects
 
-The three DTOs the shipped [[API Reference/Fetchers|fetchers]] return. All three carry a `toArray()` method that serialises to exactly the shape the [[HTTP Endpoints|matching JSON endpoint]] returns.
+The three DTOs the shipped [fetchers](API-Reference-Fetchers) return. All three carry a `toArray()` method that serialises to exactly the shape the [matching JSON endpoint](HTTP-Endpoints) returns.
 
 ## `PerformanceOverviewData`
 
@@ -68,5 +68,5 @@ The row-level shape (`{ clicks, impressions, ctr, position }`) is Google's, matc
 
 ## See also
 
-- [[API Reference/Fetchers]] — return these DTOs.
-- [[HTTP Endpoints]] — JSON endpoints return `toArray()` output.
+- [API Reference/Fetchers](API-Reference-Fetchers) — return these DTOs.
+- [HTTP Endpoints](HTTP-Endpoints) — JSON endpoints return `toArray()` output.

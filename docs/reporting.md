@@ -13,10 +13,10 @@ Two layers:
 
 Sub-pages:
 
-- [[Reporting/Search Analytics Client|`SearchAnalyticsClient`]] — the client itself.
-- [[Reporting/Fetchers|Fetchers]] — the three high-level fetchers.
-- [[Reporting/Date Range|`DateRange`]] — the value object every fetcher takes.
-- [[Reporting/Caching|Caching]] — how the client caches, cache keys, when to disable.
+- [`SearchAnalyticsClient`](Reporting-Search-Analytics-Client) — the client itself.
+- [Fetchers](Reporting-Fetchers) — the three high-level fetchers.
+- [`DateRange`](Reporting-Date-Range) — the value object every fetcher takes.
+- [Caching](Reporting-Caching) — how the client caches, cache keys, when to disable.
 
 ## Quick reference
 
@@ -120,7 +120,7 @@ Register the middleware globally (or on the route group hitting the endpoints) a
 
 ## Testing
 
-Every reporting call is HTTP against Google's endpoint, so `Http::fake()` is enough. See [[Testing]] for the full patterns.
+Every reporting call is HTTP against Google's endpoint, so `Http::fake()` is enough. See [Testing](Testing) for the full patterns.
 
 ```php
 use Illuminate\Support\Facades\Http;
@@ -142,4 +142,4 @@ expect( $response->rows()[0] )->toMatchArray( [
 ```
 
 ---
-Continue to [[Scopes]] →
+Continue to [Scopes](Scopes) →
