@@ -21,8 +21,9 @@ Links use the GitLab wiki page style, so you can jump between pages like [[Getti
 - [[Testing]]
 - [[FAQ]]
 - [[Troubleshooting]]
-- [[Changelog]]
 - [[Contributing]]
+
+Release history lives in [`CHANGELOG.md`](../CHANGELOG.md) at the repo root — the single source of truth.
 
 If you're new here, start with [[Getting Started]].
 
