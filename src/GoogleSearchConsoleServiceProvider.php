@@ -21,11 +21,15 @@ declare( strict_types=1 );
 namespace ArtisanPackUI\GoogleSearchConsole;
 
 use ArtisanPackUI\Google\Tokens\TokenManager;
+use ArtisanPackUI\GoogleSearchConsole\Bridges\CmsFramework\AdminWidgets\PerformanceCardWidget;
+use ArtisanPackUI\GoogleSearchConsole\Bridges\CmsFramework\AdminWidgets\TopPagesTableWidget;
+use ArtisanPackUI\GoogleSearchConsole\Bridges\CmsFramework\AdminWidgets\TopQueriesTableWidget;
 use ArtisanPackUI\GoogleSearchConsole\Livewire\PerformanceCard;
 use ArtisanPackUI\GoogleSearchConsole\Livewire\TopPagesTable;
 use ArtisanPackUI\GoogleSearchConsole\Livewire\TopQueriesTable;
 use ArtisanPackUI\GoogleSearchConsole\Reporting\SearchAnalyticsClient;
 use ArtisanPackUI\GoogleSearchConsole\Support\BaseInstalled;
+use ArtisanPackUI\GoogleSearchConsole\Support\CmsFrameworkInstalled;
 use ArtisanPackUI\GoogleSearchConsole\Support\GoogleConnectionResolver;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Client\Factory as HttpFactory;
@@ -90,6 +94,26 @@ class GoogleSearchConsoleServiceProvider extends ServiceProvider
         $this->registerRoutes();
         $this->registerGoogleScopeHook();
         $this->registerLivewireComponents();
+        $this->registerCmsFrameworkWidgets();
+    }
+
+    /**
+     * The CMS-framework admin widget types this package contributes,
+     * as `type => widget class` pairs. Exposed as a static method so
+     * tests can exercise the registration list without booting the
+     * service provider.
+     *
+     * @since 1.0.0
+     *
+     * @return array<string, class-string>
+     */
+    public static function cmsFrameworkWidgetTypeMap(): array
+    {
+        return [
+            'google-search-console.performance-card'  => PerformanceCardWidget::class,
+            'google-search-console.top-queries-table' => TopQueriesTableWidget::class,
+            'google-search-console.top-pages-table'   => TopPagesTableWidget::class,
+        ];
     }
 
     /**
@@ -173,6 +197,53 @@ class GoogleSearchConsoleServiceProvider extends ServiceProvider
         \Livewire\Livewire::component(
             'google-search-console::top-pages-table',
             TopPagesTable::class,
+        );
+    }
+
+    /**
+     * Register the three Livewire components as CMS-framework admin
+     * dashboard widgets. This is an optional bridge — the wrapper
+     * classes are only referenced when both the CMS framework and
+     * Livewire are installed, so the package stays CMS-agnostic when
+     * they are absent.
+     *
+     * The Livewire component aliases mirror the base component
+     * registration so the CMS framework can render the widgets by
+     * class name or by the `google-search-console::*-widget` alias.
+     *
+     * @since 1.0.0
+     */
+    protected function registerCmsFrameworkWidgets(): void
+    {
+        if ( ! CmsFrameworkInstalled::check() ) {
+            return;
+        }
+
+        if ( ! class_exists( \Livewire\Livewire::class ) ) {
+            return;
+        }
+
+        $manager = $this->app->make(
+            \ArtisanPackUI\CMSFramework\Modules\AdminWidgets\Services\AdminWidgetManager::class,
+        );
+
+        foreach ( self::cmsFrameworkWidgetTypeMap() as $type => $class ) {
+            $manager->register( $type, $class );
+        }
+
+        \Livewire\Livewire::component(
+            'google-search-console::performance-card-widget',
+            PerformanceCardWidget::class,
+        );
+
+        \Livewire\Livewire::component(
+            'google-search-console::top-queries-table-widget',
+            TopQueriesTableWidget::class,
+        );
+
+        \Livewire\Livewire::component(
+            'google-search-console::top-pages-table-widget',
+            TopPagesTableWidget::class,
         );
     }
 }
