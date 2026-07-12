@@ -98,6 +98,25 @@ class GoogleSearchConsoleServiceProvider extends ServiceProvider
     }
 
     /**
+     * The CMS-framework admin widget types this package contributes,
+     * as `type => widget class` pairs. Exposed as a static method so
+     * tests can exercise the registration list without booting the
+     * service provider.
+     *
+     * @since 1.0.0
+     *
+     * @return array<string, class-string>
+     */
+    public static function cmsFrameworkWidgetTypeMap(): array
+    {
+        return [
+            'google-search-console.performance-card'  => PerformanceCardWidget::class,
+            'google-search-console.top-queries-table' => TopQueriesTableWidget::class,
+            'google-search-console.top-pages-table'   => TopPagesTableWidget::class,
+        ];
+    }
+
+    /**
      * Load the HTTP routes when the base is installed. The routes hit
      * the GoogleConnection model so we cannot register them without
      * the base package on the autoloader.
@@ -208,9 +227,9 @@ class GoogleSearchConsoleServiceProvider extends ServiceProvider
             \ArtisanPackUI\CMSFramework\Modules\AdminWidgets\Services\AdminWidgetManager::class,
         );
 
-        $manager->register( 'google-search-console.performance-card', PerformanceCardWidget::class );
-        $manager->register( 'google-search-console.top-queries-table', TopQueriesTableWidget::class );
-        $manager->register( 'google-search-console.top-pages-table', TopPagesTableWidget::class );
+        foreach ( self::cmsFrameworkWidgetTypeMap() as $type => $class ) {
+            $manager->register( $type, $class );
+        }
 
         \Livewire\Livewire::component(
             'google-search-console::performance-card-widget',
