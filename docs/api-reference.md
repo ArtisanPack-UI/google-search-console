@@ -8,7 +8,7 @@ The public surface of `artisanpack-ui/google-search-console`.
 
 Sub-pages by class or group:
 
-- [[API Reference/GoogleSearchConsole|`GoogleSearchConsole` — the facade / helper root]]
+- [[API Reference/Google Search Console|`GoogleSearchConsole` — the facade / helper root]]
 - [[API Reference/Search Analytics Client|`SearchAnalyticsClient`]]
 - [[API Reference/Search Analytics Request|`SearchAnalyticsRequest`]]
 - [[API Reference/Search Analytics Response|`SearchAnalyticsResponse`]]

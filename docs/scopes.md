@@ -64,7 +64,7 @@ If a user connected the base package *before* you added this one:
 - The base package's connection UI surfaces this via `state.needsReauthorize === true`, showing a "Reauthorize" button that links to `/google/auth/reauthorize`.
 - The reauthorize flow uses `include_granted_scopes=true`, so the user only approves the delta — in this case, just `webmasters.readonly`.
 
-You don't have to do anything programmatically. The base package's connection UI handles it. Details: the base package's [[Connection UI]] and [[OAuth Flow#Reauthorize]].
+You don't have to do anything programmatically. The base package's connection UI handles it. Details: the base package's [Connection UI docs](https://github.com/ArtisanPack-UI/google/blob/main/docs/connection-ui.md) and [OAuth Flow docs](https://github.com/ArtisanPack-UI/google/blob/main/docs/oauth.md).
 
 ## Adding your own scopes
 
